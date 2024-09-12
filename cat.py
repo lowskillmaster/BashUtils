@@ -16,7 +16,7 @@ def cat(args: argparse.Namespace):
 	number_of_non_empty_line = 1
 	number_of_line = 1
 
-	def process_line(line):
+	def process_line(line: str):
 		nonlocal number_of_empty_line, number_of_non_empty_line, number_of_line
 
 		if line.isspace():
@@ -27,7 +27,7 @@ def cat(args: argparse.Namespace):
 				print(f"	{number_of_non_empty_line} ", end='')
 				number_of_non_empty_line += 1
 
-		if args.s and number_of_empty_line > 1:
+		if args.squeeze_blank and number_of_empty_line > 1:
 			return
 		if args.n and not args.b:
 			print(f"	{number_of_line} ", end='')
@@ -73,9 +73,8 @@ def line_flags(args: argparse.Namespace, line):
 			print(char, end='')
 
 
-def main():
+def parse_arguments():
 	parser = argparse.ArgumentParser(prog='my_cat')
-
 	parser.add_argument("-b", help="number non-blank output lines", action="store_true")
 	parser.add_argument("-n", help="number all output lines", action="store_true")
 	parser.add_argument("-E", help="display end-of-line characters as $", action="store_true")
@@ -85,8 +84,12 @@ def main():
 	parser.add_argument("filename", help="filename", type=argparse.FileType('r', encoding='UTF-8'), nargs="*")
 
 	args = parser.parse_args()
+	return args
 
-	cat(args)
+
+def main():
+
+	cat(parse_arguments())
 
 
 if __name__ == "__main__":
