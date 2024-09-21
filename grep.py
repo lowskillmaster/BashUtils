@@ -9,6 +9,10 @@ def grep(args):
 	pass
 
 
+def custom_print(*args, end='', **kwargs):
+	print(*args, end=end, **kwargs)
+
+
 def n_flag(args: argparse.Namespace):
 	count = 1
 	count_of_file = len(args.file)
@@ -18,23 +22,24 @@ def n_flag(args: argparse.Namespace):
 		for line in file:
 			match_pattern = re.search(args.pattern, line, flags=flags)
 			if count_of_file > 1:
-				print(f"{file.name}:", end='')
+				
+				custom_print(f"{file.name}:")
 
-			if xor(bool(match_pattern), args.v): 	#(match_pattern and not args.v) or (not match_pattern and args.v)
+			if xor(bool(match_pattern), args.v):  # (match_pattern and not args.v) or (not match_pattern and args.v)
 				if args.n:
-					print(f"{count}:", end='')
+					custom_print(f"{count}:")
 
-				print(f"{line}", end='')
+				custom_print(f"{line}")
 			count += 1
 
 
 def main():
-	# using color print
+	# using color custom_print
 	init()
 
 	parser = argparse.ArgumentParser(prog='my_grep')
 
-	parser.add_argument('-n', help='print line number with output lines', action='store_true')
+	parser.add_argument('-n', help='custom_print line number with output lines', action='store_true')
 	parser.add_argument('-v', help='aboba', action='store_true')
 	parser.add_argument('-i',
 						help='ignore case distinctions in patterns and datado not ignore case distinctions (default)',
