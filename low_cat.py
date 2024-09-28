@@ -16,6 +16,7 @@ def cat(args: argparse.Namespace):
 	number_of_non_empty_line = 1
 	number_of_line = 1
 
+	print(args.filename)
 	def process_line(line: str):
 		nonlocal number_of_empty_line, number_of_non_empty_line, number_of_line
 
