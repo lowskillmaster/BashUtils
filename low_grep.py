@@ -109,30 +109,6 @@ def main():
     print("[INFO]]", args)
     grep(args)
 
-# def main():
-#     parser = argparse.ArgumentParser(prog='MyGrep')
-#     parser.add_argument('-n', help='print line number with output lines', action='store_true')
-#     parser.add_argument('-v', help='invert match (select non-matching lines)', action='store_true')
-#     parser.add_argument('-i', help='ignore case distinctions in patterns and data', action='store_true')
-#     parser.add_argument('-E', '--extended-regexp', action='store_true', help='Use extended regular expressions')
-#     parser.add_argument('-e', '--regexp', action='append', help='Multiple patterns to search', type=str)
-#     parser.add_argument('-w', action='store_true', help='Match whole words only')
-#     parser.add_argument('-c', action='store_true', help='Count the number of occurrences of the provided pattern')
-#     parser.add_argument('-l', action='store_true', help='Display file names with matches only')
-#     parser.add_argument('-o', action='store_true', help='Output matches only')
-#     parser.add_argument('-q', action='store_true',
-#                         help="don't display file names with matches only (analog -h in original grep)")
-#     parser.add_argument('-f', '--pattern-file', action='store', help='Read pattern from file')
-#     parser.add_argument('-r', action='store_true', help='Recursively search directories')
-#     parser.add_argument('pattern', help='pattern to search', type=str, nargs='?')
-#     parser.add_argument('file', nargs='+', help='file to search', type=str)
-#
-#     args = parser.parse_args()
-#
-#     if not args.regexp and not args.pattern and not args.pattern_file:
-#         parser.error("You must provide at least one pattern using -e, as a positional argument, or using -f.")
-#     print("[INFO]]", args)
-#     grep(args)
 
 if __name__ == '__main__':
     main()
